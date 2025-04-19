@@ -5,7 +5,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: blue;
+  background: url('https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
   text-align: center;
   justify-content: center;
 }
