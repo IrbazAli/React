@@ -1,35 +1,64 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import useCurrencyExch from './hooks/useCurrencyExch'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const currencyData = useCurrencyExch("usd");
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-[#0a0a23] to-[#0f0f3a]">
+      <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-2xl w-[400px]">
+        {/* From Section */}
+        <div className="mb-4">
+          <label className="block text-gray-300 text-sm mb-1">From</label>
+          <div className="flex items-center justify-between bg-white rounded-lg p-2 shadow-inner">
+            <input
+              type="number"
+              className="w-full bg-transparent outline-none text-gray-800 text-lg"
+              defaultValue="0"
+            />
+            <select className="ml-2 text-gray-800 bg-gray-100 p-1 rounded">
+              <option value="usd">usd</option>
+              <option value="inr">inr</option>
+              <option value="eur">eur</option>
+            </select>
+          </div>
+        </div>
 
-export default App
+        {/* Swap Button */}
+        <div className="flex justify-center my-2">
+          <button className="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700 transition">
+            SWAP
+          </button>
+        </div>
+
+        {/* To Section */}
+        <div className="mb-6">
+          <label className="block text-gray-300 text-sm mb-1">To</label>
+          <div className="flex items-center justify-between bg-white rounded-lg p-2 shadow-inner">
+            <input
+              type="number"
+              className="w-full bg-transparent outline-none text-gray-800 text-lg"
+              defaultValue="0"
+              readOnly
+            />
+            <select className="ml-2 text-gray-800 bg-gray-100 p-1 rounded">
+              <option value="inr">inr</option>
+              <option value="usd">usd</option>
+              <option value="eur">eur</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Convert Button */}
+        <button className="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-medium">
+          Convert USD to INR
+        </button>
+      </div>
+    </div>
+    </>
+    )
+  }
+
+
+  export default App
